@@ -12,17 +12,14 @@ export class AuthMiddleware implements NestMiddleware {
     }
 
     try {
-      // Décoder le token JWT
       const decoded = jwt.verify(authHeader, 'your-secret-key') as any;
       
-      // Extraire le userId du token
       const userId = decoded.userId;
       
       if (!userId) {
         throw new UnauthorizedException('Token invalide : userId manquant');
       }
 
-      // Injecter le userId dans l'objet request
       (req as any).userId = userId;
       
       next();

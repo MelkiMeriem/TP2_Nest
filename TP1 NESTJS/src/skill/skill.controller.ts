@@ -9,7 +9,7 @@ export class SkillController {
 
   @Post()
   create(@Body() createSkillDto: CreateSkillDto) {
-    return this.skillService.create(createSkillDto);
+    return this.skillService.create(createSkillDto as any);
   }
 
   @Get()
@@ -19,16 +19,16 @@ export class SkillController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.skillService.findOne(+id);
+    return this.skillService.findOne(+id || id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateSkillDto: UpdateSkillDto) {
-    return this.skillService.update(+id, updateSkillDto);
+    return this.skillService.update(+id || id, updateSkillDto as any);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.skillService.remove(+id);
+    return this.skillService.remove(+id || id);
   }
 }

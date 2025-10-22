@@ -17,7 +17,7 @@ import { SkillModule } from './skill/skill.module';
     TrialModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: '127.0.0.1',
       port: 3306,
       username: 'nestuser', // <-- nouvel utilisateur MySQL
       password: 'N3stU$er!2025', // <-- mot de passe de l'utilisateur
