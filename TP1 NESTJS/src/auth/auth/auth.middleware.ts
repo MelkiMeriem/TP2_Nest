@@ -20,7 +20,7 @@ export class AuthMiddleware implements NestMiddleware {
         throw new UnauthorizedException('Token invalide : userId manquant');
       }
 
-      (req as any).userId = userId;
+      req['userId'] = userId;
       
       next();
     } catch (error) {
