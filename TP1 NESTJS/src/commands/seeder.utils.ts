@@ -1,7 +1,7 @@
 import { Skill } from '../skill/entities/skill.entity';
 import { User } from '../user/entities/user.entity';
 import { Cv } from '../cv/entities/cv.entity';
-import { randFirstName, randLastName, randEmail, randJobTitle, randNumber, randWord, randPassword } from '@ngneat/falso';
+import { randFirstName, randLastName,randUserName, randEmail, randJobTitle, randNumber, randWord, randPassword } from '@ngneat/falso';
 import { cfg } from './seeder.config';
 
 const uniqueGenerate = (fn: () => string, count: number): string[] => {
@@ -16,7 +16,7 @@ export const genSkills = (): Skill[] =>
 
 
 export const genUsers = (): Partial<User>[] => {
-  const usernames = uniqueGenerate(() => randFirstName().toLowerCase(), cfg.users);
+  const usernames = uniqueGenerate(() => randUserName(), cfg.users);
   const emails = uniqueGenerate(() => randEmail(), cfg.users);
   return Array.from({ length: cfg.users }, (_, i) => ({
     username: usernames[i],
