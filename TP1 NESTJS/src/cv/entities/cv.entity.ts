@@ -20,7 +20,7 @@ export class Cv {
   path?: string;
   @ManyToOne(() => User, (user) => user.cvs, { onDelete: 'CASCADE' })
   user: User;
-  @ManyToMany(() => Skill, (skill) => skill.cvs, { cascade: false })
+  @ManyToMany(() => Skill, (skill) => skill.cvs, { cascade: false, eager: true })
   @JoinTable({
     name: 'cv_skills',
     joinColumn: { name: 'cv_id', referencedColumnName: 'id' },
